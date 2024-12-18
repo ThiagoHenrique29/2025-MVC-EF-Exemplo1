@@ -1,0 +1,63 @@
+﻿@model MVC_EF.Exemplo1.Models.EditoraEditViewModel
+
+@{
+    ViewBag.Title = "Editar Editora";
+    Layout = "_Layout";
+}
+
+<h1 class="display-6 my-5">Editar Editora</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="EditoraID" />
+
+    <div class="form-group mb-4">
+        <label for="EditoraNome" class="form-label">Nome da Editora</label>
+        <input asp-for="EditoraNome" class="form-control" />
+        <span asp-validation-for="EditoraNome" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="EditoraLogradouro" class="form-label">Logradouro</label>
+        <input asp-for="EditoraLogradouro" class="form-control" />
+        <span asp-validation-for="EditoraLogradouro" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="EditoraNumero" class="form-label">Número</label>
+        <input asp-for="EditoraNumero" class="form-control" />
+        <span asp-validation-for="EditoraNumero" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="EditoraCidade" class="form-label">Cidade</label>
+        <input asp-for="EditoraCidade" class="form-control" />
+        <span asp-validation-for="EditoraCidade" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="EditoraUF" class="form-label">UF</label>
+        <input asp-for="EditoraUF" class="form-control" />
+        <span asp-validation-for="EditoraUF" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="EditoraPais" class="form-label">País</label>
+        <input asp-for="EditoraPais" class="form-control" />
+        <span asp-validation-for="EditoraPais" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="EditoraCEP" class="form-label">CEP</label>
+        <input asp-for="EditoraCEP" class="form-control" />
+        <span asp-validation-for="EditoraCEP" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="EditoraTelefone" class="form-label">Telefone</label>
+        <input asp-for="EditoraTelefone" class="form-control" />
+        <span asp-validation-for="EditoraTelefone" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary" role="button">Cancelar</a>
+</form>

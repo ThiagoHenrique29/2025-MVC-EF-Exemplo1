@@ -1,0 +1,73 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<MVC_EF.Exemplo1.Models.AutorListViewModel>
+
+
+@{
+ViewBag.Title = "Gerenciamento de Autores";
+Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/css/livro.css" asp-append-version="true" />
+
+<h1 class="display-6 my-5">Gerenciamento de Autores</h1>
+
+<!-- Formulário de Filtragem -->
+<form asp-action="Index" method="get">
+    <div class="input-group mb-3">
+        <input name="keyword" type="text" class="form-control"
+               value="@ViewBag.keyword" placeholder="Filtrar..." />
+        <div class="input-group-append">
+            <button class="btn btn-secondary" type="submit">Filtrar</button>
+        </div>
+        <a asp-controller="Autor" asp-action="Create">
+            <button type="button" class="btn btn-primary ms-2">
+                <i class="bi bi-plus-circle-dotted"></i>
+            </button>
+        </a>
+    </div>
+</form>
+
+<!-- Tabela de Autores -->
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+    <tr>
+        <th>@Html.DisplayNameFor(m => m[0].AutorNome)</th>
+        <th>@Html.DisplayNameFor(m => m[0].AutorDataNascimento)</th>
+        <th>@Html.DisplayNameFor(m => m[0].AutorEmail)</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var autor in Model)
+    {
+    <tr>
+        <td>@autor.AutorNome</td>
+        <td>
+            @(autor.AutorDataNascimento.HasValue
+            ? autor.AutorDataNascimento.Value.ToShortDateString()
+            : "N/A")
+        </td>
+        <td>@autor.AutorEmail</td>
+        <td>
+            <a asp-controller="Autor" asp-action="Edit" asp-route-id="@autor.AutorID"><button type="button" class="btn btn-secondary"><i class="bi bi-pencil-square"></i></button></a> <a asp-controller="Autor" asp-action="Delete" asp-route-id="@autor.AutorID"><button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button></a>
+        </td>
+    </tr>
+    }
+    </tbody>
+</table>
+
+<!-- Contador de Registros -->
+<p class="small">
+    Mostrando registros de @ViewBag.primeiro até @ViewBag.ultimo de um total de @ViewBag.total
+</p>
+
+<!-- Paginação -->
+@Html.PagedListPager((IPagedList)Model,
+pagina => Url.Action("Index", new { pagina = pagina, keyword = @ViewBag.keyword }),
+new PagedListRenderOptions
+{
+LiElementClasses = new string[] { "page-item" },
+PageClasses = new string[] { "page-link" }
+})

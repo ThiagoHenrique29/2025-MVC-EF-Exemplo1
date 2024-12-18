@@ -1,0 +1,30 @@
+﻿@model MVC_EF.Exemplo1.Models.AutorEditViewModel
+@{
+ViewBag.Title = "Adicionar Autor";
+Layout = "_Layout";
+}
+
+<h1 class="display-6 my-5">Adicionar Novo Autor</h1>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="AutorNome" class="form-label">Nome</label>
+        <input asp-for="AutorNome" class="form-control" />
+        <span asp-validation-for="AutorNome" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="AutorDataNascimento" class="form-label">Data de Nascimento</label>
+        <input asp-for="AutorDataNascimento" type="date" class="form-control" />
+        <span asp-validation-for="AutorDataNascimento" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="AutorEmail" class="form-label">Email</label>
+        <input asp-for="AutorEmail" type="email" class="form-control" />
+        <span asp-validation-for="AutorEmail" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

@@ -355,5 +355,4 @@ public class LivroController : Controller
 
         return View(modelo);
     }
-
 }

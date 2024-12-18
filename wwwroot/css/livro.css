@@ -1,0 +1,84 @@
+﻿/* Definindo as cores roxas pastel */
+:root {
+    --roxo-pastel: #D4A4E8;
+    --roxo-claro: #E8D1F1;
+    --roxo-escuro: #9C68B4;
+    --cinza-claro: #F2F2F2;
+    --branco: #FFFFFF;
+}
+
+/* Estilos gerais */
+body {
+    background-color: var(--cinza-claro);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilo da tabela */
+.table-striped {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 30px;
+    table-layout: fixed; /* Garante que a largura das colunas seja fixa */
+}
+
+/* Defina uma altura mínima para as células da tabela */
+.table td, .table th {
+    min-height: 60px; /* Garantir que a altura seja suficiente para evitar "pulos" */
+    vertical-align: middle; /* Garante que o conteúdo fique centralizado */
+}
+
+/* Formatação do input de número */
+.estoque-quantidade {
+    width: 80px;
+    text-align: center;
+    margin: 0 10px;
+    padding: 5px;
+    border: 1px solid var(--roxo-escuro);
+    height: 36px; /* Altura fixada para garantir consistência */
+    box-sizing: border-box; /* Garante que padding não altere o tamanho do elemento */
+}
+
+/* Organiza os formulários de ação (Adicionar e Retirar) */
+.estoque-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 240px; /* Garante que os botões e os campos de quantidade fiquem no mesmo alinhamento */
+}
+
+/* Garantir que os botões não encolham */
+.estoque-actions button {
+    flex-shrink: 0; /* Impede que os botões encolham */
+    height: 36px; /* Altura fixa para os botões */
+    margin: 0 5px; /* Distância entre os botões */
+    padding: 0 10px; /* Espaçamento interno */
+}
+
+/* Ajuste de espaçamento entre os elementos */
+.estoque-actions form {
+    margin-right: 5px;
+}
+
+/* Adicionar um pouco de padding para garantir que o layout não quebre */
+.table td {
+    padding: 12px;
+}
+
+/* Estilo das linhas da tabela */
+.table th {
+    background-color: var(--roxo-pastel);
+    color: var(--roxo-escuro);
+    font-weight: bold;
+}
+
+.table-striped tr:nth-child(even) {
+    background-color: var(--cinza-claro);
+}
+
+.table-striped tr:hover {
+    background-color: var(--roxo-claro);
+}
+
+.table td {
+    color: var(--roxo-escuro);
+}

@@ -1,0 +1,64 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<EditoraListViewModel>
+
+@{
+ViewBag.Title = "Gerenciamento de Editoras";
+Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/css/livro.css" asp-append-version="true" />
+
+<h1 class="display-6 my-5">Gerenciamento de Editoras</h1>
+
+
+<form asp-action="Index">
+    <div class="input-group">
+        <input name="keyword" type="text" class="form-control"
+               value="@ViewBag.keyword" placeholder="Filtrar..."/>
+        <div class="input-group-append">
+            <button class="btn btn-secondary" type="submit">Filtrar</button>
+        </div>
+        <a asp-controller="Editora" asp-action="Create">
+            <button type="button" class="btn btn-primary ms-2">
+                <i class="bi bi-plus-circle-dotted"></i>
+            </button>
+        </a>
+    </div>
+</form>
+
+<table class="table-striped table">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(m => m[0].EditoraNome)</th>
+        <th>@Html.DisplayNameFor(m => m[0].EditoraCidade)</th>
+        <th>@Html.DisplayNameFor(m => m[0].EditoraUF)</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var editora in Model)
+    {
+    <tr>
+        <td>@editora.EditoraNome</td>
+        <td>@editora.EditoraCidade</td>
+        <td>@editora.EditoraUF</td>
+        <td>
+            <a asp-controller="Editora" asp-action="Edit" asp-route-id="@editora.EditoraID"><button type="button" class="btn btn-secondary"><i class="bi bi-pencil-square"></i></button></a>
+            <a asp-controller="Editora" asp-action="Delete" asp-route-id="@editora.EditoraID"><button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button></a>
+        </td>
+    </tr>
+    }
+    </tbody>
+</table>
+
+<p class="small">Mostrando registros de @ViewBag.primeiro até
+    @ViewBag.ultimo de um total de @ViewBag.total</p>
+
+@Html.PagedListPager((IPagedList)Model,
+pagina => Url.Action("Index", new { pagina = pagina, keyword = @ViewBag.keyword }),
+new PagedListRenderOptions {
+LiElementClasses = new string[] { "page-item" },
+PageClasses = new string[] { "page-link" }
+})

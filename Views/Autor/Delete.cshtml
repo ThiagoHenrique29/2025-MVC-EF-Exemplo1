@@ -1,0 +1,26 @@
+﻿@model MVC_EF.Exemplo1.Models.AutorListViewModel
+@{
+ViewBag.Title = "Remover Autor";
+Layout = "_Layout";
+}
+
+<h1 class="display-6 my-5">Remover Autor</h1>
+<p class="mb-3">Tem certeza que deseja excluir o autor abaixo?</p>
+
+<div class="mb-3">
+    <label class="fw-bold">Nome:</label> @Model.AutorNome
+</div>
+
+<div class="mb-3">
+    <label class="fw-bold">Data de Nascimento:</label> @(Model.AutorDataNascimento.HasValue ? Model.AutorDataNascimento.Value.ToShortDateString() : "N/A")
+</div>
+
+<div class="mb-3">
+    <label class="fw-bold">Email:</label> @Model.AutorEmail
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="AutorID" />
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

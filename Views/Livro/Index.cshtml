@@ -8,6 +8,8 @@
     Layout = "_Layout";
 }
 
+<link rel="stylesheet" href="~/css/livro.css" asp-append-version="true"/>
+
 <h1 class="display-6 my-5">Gerenciamento de livros</h1>
 @if (ViewBag.keyword != "")
 {
@@ -18,15 +20,13 @@
 <form asp-action="Index">
     <div class="input-group">
         <input name="keyword" type="text" class="form-control"
-               value="@ViewBag.keyword" placeholder="Filtar por..."/>
+               value="@ViewBag.keyword" placeholder="Filtrar..."/>
         <div class="input-group-append">
             <button class="btn btn-secondary" type="submit">Filtrar...</button>
         </div>
+           <a asp-controller="Livro" asp-action="Create"><button type="button" class="btn btn-primary ms-2"><i class="bi bi-plus-circle-dotted"></i></button></a>
     </div>
 </form>
-
-
-<p>Cadastrar <a asp-controller="Livro" asp-action="Create">novo livro</a>?</p>
 
 <table class="table-striped table">
     <thead>

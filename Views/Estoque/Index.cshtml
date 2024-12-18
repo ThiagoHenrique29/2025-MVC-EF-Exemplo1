@@ -1,0 +1,40 @@
+﻿@model List<LivroEstoqueViewModel>
+
+@{
+ViewData["Title"] = "Estoque de Livros";
+}
+
+<link rel="stylesheet" href="~/css/livro.css" asp-append-version="true" />
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Nome do Livro</th>
+        <th>Quantidade em Estoque</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var livro in Model)
+    {
+    <tr>
+        <td>@livro.Nome</td>
+        <td>
+            <div class="estoque-actions">
+                <form asp-action="AdicionarEstoque" method="post" style="display:inline;">
+                    <input type="hidden" name="livroId" value="@livro.LivroID" />
+                    <button type="submit" class="btn btn-success">Adicionar</button>
+                </form>
+                <input type="number" value="@livro.QuantidadeEstoque" disabled class="form-control estoque-quantidade" />
+                <form asp-action="RetirarEstoque" method="post" style="display:inline;">
+                    <input type="hidden" name="livroId" value="@livro.LivroID" />
+                    <button type="submit" class="btn btn-danger">Retirar</button>
+                </form>
+            </div>
+        </td>
+    </tr>
+    }
+    </tbody>
+
+</table>

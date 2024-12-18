@@ -1,22 +1,78 @@
-html {
-  font-size: 14px;
+/* Definindo a cor roxo pastel */
+:root {
+  --roxo-pastel: #D4A4E8;
+  --roxo-claro: #E8D1F1;
+  --roxo-escuro: #9C68B4;
+  --cinza-claro: #F2F2F2;
+  --branco: #FFFFFF;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+/* Estilo geral da página */
 body {
-  margin-bottom: 60px;
+  background-color: var(--cinza-claro);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Estilo do header */
+header {
+  background-color: var(--roxo-pastel);
+}
+
+.navbar {
+  background-color: var(--roxo-pastel);
+  border-bottom: 2px solid var(--roxo-escuro);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  color: var(--roxo-escuro) !important;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  color: var(--roxo-escuro) !important;
+  font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--roxo-claro) !important;
+  background-color: var(--roxo-escuro);
+  border-radius: 5px;
+}
+
+/* Estilo dos links */
+a {
+  color: var(--roxo-escuro);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--roxo-claro);
+  text-decoration: underline;
+}
+
+/* Container */
+.container {
+  margin-top: 20px;
+}
+
+/* Botões */
+.btn {
+  background-color: var(--roxo-escuro);
+  color: var(--branco);
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--roxo-claro);
+  color: var(--roxo-escuro);
+}
+
+/* Rodapé */
+footer {
+  background-color: var(--roxo-pastel);
+  padding: 10px;
+  text-align: center;
 }

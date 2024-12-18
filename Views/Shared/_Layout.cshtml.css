@@ -46,3 +46,9 @@ button.accept-policy {
   white-space: nowrap;
   line-height: 60px;
 }
+
+img{
+  width: 2%;
+  height: 2%;
+  margin: 15px;
+}
